@@ -6,4 +6,4 @@ Each image in the Disease Detection in Fruit Images dataset has bounding boxes a
 
 Here is the visualized example grid with annotations:
 
-[Dataset grid example](https://github.com/dataset-ninja/disease-detection-in-fruit-images/raw/main/visualizations/side_annotations_grid.png)
+![Dataset grid example](https://github.com/dataset-ninja/disease-detection-in-fruit-images/raw/main/visualizations/side_annotations_grid.png)
