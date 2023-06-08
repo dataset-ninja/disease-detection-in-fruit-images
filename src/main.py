@@ -22,6 +22,7 @@ team_id = sly.env.team_id()
 workspace_id = sly.env.workspace_id()
 
 PROJECT_NAME = "Disease Detection in Fruit Images"
+PROJECT_FULLNAME = "Region Aggregated Attention CNN for Disease Detection in Fruit Images"
 DOWNLOAD_ORIGINAL_URL = "https://github.com/QuIIL/Dataset-Region-Aggregated-Attention-CNN-for-Disease-Detection-in-Fruit-Images/archive/refs/heads/main.zip"
 project_info = api.project.get_info_by_name(workspace_id, PROJECT_NAME)
 if project_info is None:
@@ -76,7 +77,7 @@ sly.logger.info(f"Prepared download link: {download_sly_url}")
 custom_data = {
     # required fields
     "name": PROJECT_NAME,
-    "fullname": "Region Aggregated Attention CNN for Disease Detection in Fruit Images",
+    "fullname": PROJECT_FULLNAME,
     "cv_tasks": ["object detection"],
     "annotation_types": ["object detection"],
     "industries": ["general domain"],
@@ -220,10 +221,10 @@ def build_license():
 
 def main():
     pass
-    # build_stats()
-    # build_visualizations()
-    # build_summary()
-    # build_license()
+    build_stats()
+    build_visualizations()
+    build_summary()
+    build_license()
 
 
 if __name__ == "__main__":
