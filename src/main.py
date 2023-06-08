@@ -22,6 +22,7 @@ team_id = sly.env.team_id()
 workspace_id = sly.env.workspace_id()
 
 PROJECT_NAME = "Disease Detection in Fruit Images"
+DOWNLOAD_ORIGINAL_URL = "https://github.com/QuIIL/Dataset-Region-Aggregated-Attention-CNN-for-Disease-Detection-in-Fruit-Images/archive/refs/heads/main.zip"
 project_info = api.project.get_info_by_name(workspace_id, PROJECT_NAME)
 if project_info is None:
     project_info = convert_and_upload_supervisely_project(api, workspace_id)
@@ -57,7 +58,16 @@ if len(new_obj_classes) > 0:
 
 # 2. get download link
 download_sly_url = dtools.prepare_download_link(project_info)
-dtools.update_sly_url_dict({project_id: download_sly_url})
+dtools.update_sly_url_dict(
+    {
+        PROJECT_NAME: {
+            "id": project_id,
+            "download_sly_url": download_sly_url,
+            "download_original_url": DOWNLOAD_ORIGINAL_URL,
+        }
+    }
+)
+sly.logger.info(f"Prepared download link: {download_sly_url}")
 
 
 # 3. upload custom data
@@ -65,7 +75,7 @@ dtools.update_sly_url_dict({project_id: download_sly_url})
 # preset fields
 custom_data = {
     # required fields
-    "name": "Disease Detection in Fruit Images",
+    "name": PROJECT_NAME,
     "fullname": "Region Aggregated Attention CNN for Disease Detection in Fruit Images",
     "cv_tasks": ["object detection"],
     "annotation_types": ["object detection"],
@@ -79,7 +89,7 @@ custom_data = {
     "citation_url": "https://github.com/dataset-ninja/disease-detection-in-fruit-images",
     "download_sly_url": download_sly_url,
     # optional fields
-    "download_original_url": "https://github.com/dataset-ninja/disease-detection-in-fruit-images/archive/refs/heads/main.zip",
+    "download_original_url": DOWNLOAD_ORIGINAL_URL,
     # "paper": None,
     # "organization_name": None,
     # "organization_url": None,
@@ -210,10 +220,10 @@ def build_license():
 
 def main():
     pass
-    build_stats()
-    build_visualizations()
-    build_summary()
-    build_license()
+    # build_stats()
+    # build_visualizations()
+    # build_summary()
+    # build_license()
 
 
 if __name__ == "__main__":
