@@ -1,12 +1,11 @@
 import json
 import os
 
-import supervisely as sly
 from dotenv import load_dotenv
 
 import dataset_tools as dtools
+import supervisely as sly
 from src.convert import convert_and_upload_supervisely_project
-
 
 if sly.is_development():
     load_dotenv(os.path.expanduser("~/ninja.env"))
@@ -106,16 +105,14 @@ custom_data = project_info.custom_data
 def build_stats():
     stats = [
         dtools.ClassBalance(project_meta),
-        dtools.ClassCooccurrence(project_meta, force=False),
+        dtools.ClassCooccurrence(project_meta),
         dtools.ClassesPerImage(project_meta, datasets),
         dtools.ObjectsDistribution(project_meta),
         dtools.ObjectSizes(project_meta),
         dtools.ClassSizes(project_meta),
     ]
     heatmaps = dtools.ClassesHeatmaps(project_meta)
-    previews = dtools.Previews(
-        project_id, project_meta, api, team_id, is_detection_task=True
-    )
+    previews = dtools.Previews(project_id, project_meta, api, team_id, is_detection_task=True)
 
     for stat in stats:
         if not sly.fs.file_exists(f"./stats/{stat.basename_stem}.json"):
@@ -151,24 +148,18 @@ def build_stats():
 
 def build_visualizations():
     renderers = [
-        dtools.Poster(project_id, project_meta, force=False, is_detection_task=True),
-        dtools.SideAnnotationsGrid(
-            project_id, project_meta, is_detection_task=True, rows=2
-        ),
+        dtools.Poster(project_id, project_meta, is_detection_task=True),
+        dtools.SideAnnotationsGrid(project_id, project_meta, is_detection_task=True, rows=2),
     ]
     animators = [
         dtools.HorizontalGrid(project_id, project_meta, is_detection_task=True, rows=2),
-        dtools.VerticalGrid(
-            project_id, project_meta, force=False, is_detection_task=True
-        ),
+        dtools.VerticalGrid(project_id, project_meta, is_detection_task=True),
     ]
 
     for vis in renderers + animators:
         if not sly.fs.file_exists(f"./visualizations/{vis.basename_stem}.png"):
             vis.force = True
-    renderers, animators = [r for r in renderers if r.force], [
-        a for a in animators if a.force
-    ]
+    renderers, animators = [r for r in renderers if r.force], [a for a in animators if a.force]
 
     for a in animators:
         if not sly.fs.file_exists(f"./visualizations/{a.basename_stem}.webm"):
