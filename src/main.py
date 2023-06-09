@@ -25,7 +25,7 @@ PROJECT_FULLNAME = "Region Aggregated Attention CNN for Disease Detection in Fru
 DOWNLOAD_ORIGINAL_URL = "https://github.com/QuIIL/Dataset-Region-Aggregated-Attention-CNN-for-Disease-Detection-in-Fruit-Images/archive/refs/heads/main.zip"
 project_info = api.project.get_info_by_name(workspace_id, PROJECT_NAME)
 if project_info is None:
-    project_info = convert_and_upload_supervisely_project(api, workspace_id)
+    project_info = convert_and_upload_supervisely_project(api, workspace_id, PROJECT_NAME)
 
 
 # 1a initialize sly api way
@@ -148,7 +148,7 @@ def build_stats():
 
 def build_visualizations():
     renderers = [
-        dtools.Poster(project_id, project_meta, is_detection_task=True),
+        dtools.Poster(project_id, project_meta, is_detection_task=True, title=PROJECT_NAME),
         dtools.SideAnnotationsGrid(project_id, project_meta, is_detection_task=True, rows=2),
     ]
     animators = [

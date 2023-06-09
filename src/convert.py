@@ -10,8 +10,7 @@ import supervisely as sly
 from supervisely.io.fs import get_file_name
 
 
-def convert_and_upload_supervisely_project(api: sly.Api, workspace_id):
-    project_name = "Disease Detection in Fruit Images"
+def convert_and_upload_supervisely_project(api: sly.Api, workspace_id, project_name):
     dataset_path = "/Users/almaz/Downloads/Dataset-Region-Aggregated-Attention-CNN-for-Disease-Detection-in-Fruit-Images-main"
     ds_name = "ds0"
     batch_size = 30
