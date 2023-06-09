@@ -1,22 +1,21 @@
 # https://github.com/QuIIL/Dataset-Region-Aggregated-Attention-CNN-for-Disease-Detection-in-Fruit-Images
 
 import os
-import numpy as np
-import supervisely as sly
-from supervisely.io.fs import get_file_name
 import xml.etree.ElementTree as ET
 
+import numpy as np
 from tqdm import tqdm
+
+import supervisely as sly
+from supervisely.io.fs import get_file_name
 
 
 def convert_and_upload_supervisely_project(api: sly.Api, workspace_id):
-
     project_name = "Disease Detection in Fruit Images"
     dataset_path = "/Users/almaz/Downloads/Dataset-Region-Aggregated-Attention-CNN-for-Disease-Detection-in-Fruit-Images-main"
     ds_name = "ds0"
     batch_size = 30
     download_bbox = True
-
 
     def create_ann(image_path):
         labels = []
@@ -56,13 +55,11 @@ def convert_and_upload_supervisely_project(api: sly.Api, workspace_id):
 
         return sly.Annotation(img_size=(image_np.shape[0], image_np.shape[1]), labels=labels)
 
-
-    obj_class = sly.ObjClass("anthracnose", sly.Bitmap)
+    obj_class = sly.ObjClass("anthracnose", sly.Bitmap, color=[185, 185, 255])
     obj_class_collection = sly.ObjClassCollection([obj_class])
     if download_bbox is True:
-        obj_class_bbox = sly.ObjClass("anthracnose_bbox", sly.Rectangle)
+        obj_class_bbox = sly.ObjClass("anthracnose_bbox", sly.Rectangle, color=[255, 255, 0])
         obj_class_collection = sly.ObjClassCollection([obj_class, obj_class_bbox])
-
 
     project_info = api.project.create(workspace_id, project_name)
 
@@ -71,17 +68,17 @@ def convert_and_upload_supervisely_project(api: sly.Api, workspace_id):
 
     dataset = api.dataset.create(project_info.id, ds_name, change_name_if_conflict=True)
 
-
     images_path = os.path.join(dataset_path, "Images")
     images_names = os.listdir(images_path)
     masks_path = os.path.join(dataset_path, "Labels_mask")
     bbox_pathes = os.path.join(dataset_path, "Labels_xml")
 
-
     progress = tqdm(desc=f"Create dataset {ds_name}", total=len(images_names))
 
     for images_names_batch in sly.batched(images_names, batch_size=batch_size):
-        img_pathes_batch = [os.path.join(images_path, image_name) for image_name in images_names_batch]
+        img_pathes_batch = [
+            os.path.join(images_path, image_name) for image_name in images_names_batch
+        ]
 
         anns_batch = [create_ann(image_path) for image_path in img_pathes_batch]
 
