@@ -84,7 +84,7 @@ custom_data = {
     "homepage_url": "https://github.com/QuIIL/Dataset-Region-Aggregated-Attention-CNN-for-Disease-Detection-in-Fruit-Images",
     "license": "CC BY 4.0",
     "license_url": "https://creativecommons.org/licenses/by/4.0/legalcode",
-    "preview_image_id": 206595,
+    "preview_image_id": 350405,
     "github_url": "https://github.com/dataset-ninja/disease-detection-in-fruit-images",
     "citation_url": "https://github.com/dataset-ninja/disease-detection-in-fruit-images",
     "download_sly_url": download_sly_url,
