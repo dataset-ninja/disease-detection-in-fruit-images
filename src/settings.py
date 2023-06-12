@@ -12,7 +12,7 @@ PROJECT_NAME_FULL = "Region Aggregated Attention CNN for Disease Detection in Fr
 # * After uploading to instance ##
 ##################################
 LICENSE: License = License.CC_BY_4_0()
-INDUSTRIES: List[Industry] = Industry.Agriculture()
+INDUSTRIES: List[Industry] = [Industry.Agriculture()]
 CV_TASKS: List[CVTask] = [CVTask.ObjectDetection()]
 ANNOTATION_TYPES: List[AnnotationType] = [AnnotationType.ObjectDetection()]
 
