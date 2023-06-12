@@ -41,20 +41,6 @@ datasets = api.dataset.get_list(project_id)
 # datasets = None
 
 
-project_info = api.project.get_info_by_id(project_id)
-custom_data = project_info.custom_data
-
-new_obj_classes = []
-for obj_class in project_meta.obj_classes:
-    if obj_class.geometry_type == sly.Rectangle and obj_class.color != YELLOW_COLOR:
-        new_obj_classes.append(obj_class.clone(color=YELLOW_COLOR))
-    elif obj_class.geometry_type == sly.Bitmap and obj_class.color != GREEN_COLOR:
-        new_obj_classes.append(obj_class.clone(color=GREEN_COLOR))
-
-if len(new_obj_classes) > 0:
-    project_meta = project_meta.clone(obj_classes=new_obj_classes)
-    api.project.update_meta(project_id, project_meta)
-
 
 # 2. get download link
 download_sly_url = dtools.prepare_download_link(project_info)

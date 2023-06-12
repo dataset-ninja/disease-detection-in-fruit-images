@@ -53,11 +53,13 @@ def convert_and_upload_supervisely_project(api: sly.Api, workspace_id, project_n
                 labels.append(curr_label)
 
         return sly.Annotation(img_size=(image_np.shape[0], image_np.shape[1]), labels=labels)
+    YELLOW_COLOR = [255, 255, 0]
+    GREEN_COLOR = [15, 138, 125]
 
-    obj_class = sly.ObjClass("anthracnose", sly.Bitmap, color=[185, 185, 255])
+    obj_class = sly.ObjClass("anthracnose", sly.Bitmap, color=GREEN_COLOR)
     obj_class_collection = sly.ObjClassCollection([obj_class])
     if download_bbox is True:
-        obj_class_bbox = sly.ObjClass("anthracnose_bbox", sly.Rectangle, color=[255, 255, 0])
+        obj_class_bbox = sly.ObjClass("anthracnose_bbox", sly.Rectangle, color=YELLOW_COLOR)
         obj_class_collection = sly.ObjClassCollection([obj_class, obj_class_bbox])
 
     project_info = api.project.create(workspace_id, project_name)
