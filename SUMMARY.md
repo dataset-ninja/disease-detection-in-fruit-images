@@ -1,7 +1,7 @@
-**Region Aggregated Attention CNN for Disease Detection in Fruit Images** is a dataset for object detection tasks. It is used in the agriculture industry.
+**Region Aggregated Attention CNN for Disease Detection in Fruit Images** is a dataset for object detection tasks. It is used in the agricultural industry. 
 
 The dataset consists of 74 images with 181 labeled objects belonging to 1 single class (*anthracnose*).
 
-Images in the Disease Detection in Fruit Images dataset has bounding box annotations. All images are labeled (i.e. with annotations). There is 1 split in the dataset: *ds0* (74 images). The dataset was released in 2021.
+Images in the Disease Detection in Fruit Images dataset have bounding box annotations. All images are labeled (i.e. with annotations). There are no pre-defined <i>train/val/test</i> splits in the dataset. The dataset was released in 2021 by the [Quantitative Imaging & Informatics Laboratory, South Korea](http://kwaklab.net/).
 
 <img src="https://github.com/dataset-ninja/disease-detection-in-fruit-images/raw/main/visualizations/poster.png">

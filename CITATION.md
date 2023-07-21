@@ -1,10 +1,11 @@
-If you make use of the Region Aggregated Attention CNN for Disease Detection in Fruit Images data, please cite the following reference (to be prepared after the challenge workshop) in any publications:
+If you make use of the Disease Detection in Fruit Images data, please cite the following reference:
 
-```
-@misc{Disease Detection in Fruit Images,
-	author = "TO BE FILLED MANUALLY!",
-	title = "Region Aggregated Attention CNN for Disease Detection in Fruit Images",
-	howpublished = "https://github.com/QuIIL/Dataset-Region-Aggregated-Attention-CNN-for-Disease-Detection-in-Fruit-Images"
+``` bibtex 
+@dataset{Disease Detection in Fruit Images,
+	author={chhan95},
+	title={Region Aggregated Attention CNN for Disease Detection in Fruit Images},
+	year={2021},
+	url={https://github.com/QuIIL/Dataset-Region-Aggregated-Attention-CNN-for-Disease-Detection-in-Fruit-Images}
 }
 ```
 
