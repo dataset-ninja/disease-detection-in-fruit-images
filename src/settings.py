@@ -14,7 +14,7 @@ from dataset_tools.templates import (
 # * Before uploading to instance #
 ##################################
 PROJECT_NAME = "Disease Detection in Fruit Images"
-PROJECT_NAME_FULL = "Region Aggregated Attention CNN for Disease Detection in Fruit Images"
+PROJECT_NAME_FULL = "Dataset: Region Aggregated Attention CNN for Disease Detection in Fruit Images"
 
 ##################################
 # * After uploading to instance ##
@@ -42,7 +42,7 @@ DOWNLOAD_ORIGINAL_URL: Optional[
     Union[str, dict]
 ] = "https://github.com/QuIIL/Dataset-Region-Aggregated-Attention-CNN-for-Disease-Detection-in-Fruit-Images/archive/refs/heads/main.zip"
 
-CLASS2COLOR: Optional[Dict[str, List[str]]] = None
+CLASS2COLOR: Optional[Dict[str, List[str]]] = {"anthracnose": [255, 0, 0]}
 # If specific colors for classes are needed, fill this dict (e.g. {"class1": [255, 0, 0], "class2": [0, 255, 0]})
 
 PAPER: Optional[str] = None
