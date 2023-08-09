@@ -20,16 +20,6 @@ def convert_and_upload_supervisely_project(api: sly.Api, workspace_id, project_n
         labels = []
         image_np = sly.imaging.image.read(image_path)[:, :, 0]
         image_name = get_file_name(image_path)
-        mask_path = os.path.join(masks_path, image_name + "_mask.png")
-
-        ann_np = sly.imaging.image.read(mask_path)[:, :, 0]
-        unique_idx = list(np.unique(ann_np))
-        unique_idx.remove(0)
-        for idx in unique_idx:
-            mask = ann_np == idx
-            curr_bitmap = sly.Bitmap(mask)
-            curr_label = sly.Label(curr_bitmap, obj_class)
-            labels.append(curr_label)
 
         if download_bbox is True:
             coords = []
@@ -51,16 +41,25 @@ def convert_and_upload_supervisely_project(api: sly.Api, workspace_id, project_n
                 )
                 curr_label = sly.Label(curr_rectangle, obj_class_bbox)
                 labels.append(curr_label)
+        else:
+            mask_path = os.path.join(masks_path, image_name + "_mask.png")
+            ann_np = sly.imaging.image.read(mask_path)[:, :, 0]
+            unique_idx = list(np.unique(ann_np))
+            unique_idx.remove(0)
+            for idx in unique_idx:
+                mask = ann_np == idx
+                curr_bitmap = sly.Bitmap(mask)
+                curr_label = sly.Label(curr_bitmap, obj_class)
+                labels.append(curr_label)
 
         return sly.Annotation(img_size=(image_np.shape[0], image_np.shape[1]), labels=labels)
-    YELLOW_COLOR = [255, 255, 0]
-    GREEN_COLOR = [15, 138, 125]
 
-    obj_class = sly.ObjClass("anthracnose", sly.Bitmap, color=GREEN_COLOR)
-    obj_class_collection = sly.ObjClassCollection([obj_class])
     if download_bbox is True:
-        obj_class_bbox = sly.ObjClass("anthracnose_bbox", sly.Rectangle, color=YELLOW_COLOR)
-        obj_class_collection = sly.ObjClassCollection([obj_class, obj_class_bbox])
+        obj_class_bbox = sly.ObjClass("anthracnose", sly.Rectangle)
+        obj_class_collection = sly.ObjClassCollection([obj_class_bbox])
+    else:
+        obj_class = sly.ObjClass("anthracnose", sly.Bitmap)
+        obj_class_collection = sly.ObjClassCollection([obj_class])
 
     project_info = api.project.create(workspace_id, project_name)
 
