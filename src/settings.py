@@ -31,7 +31,7 @@ if RELEASE_DATE is None:
     RELEASE_YEAR: int = None
 HOMEPAGE_URL: str = "https://github.com/QuIIL/Dataset-Region-Aggregated-Attention-CNN-for-Disease-Detection-in-Fruit-Images"
 
-PREVIEW_IMAGE_ID: int = 350405
+PREVIEW_IMAGE_ID: int = 1846604
 
 GITHUB_URL: str = "https://github.com/dataset-ninja/disease-detection-in-fruit-images"
 
