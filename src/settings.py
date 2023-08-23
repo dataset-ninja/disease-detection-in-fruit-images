@@ -46,9 +46,9 @@ DOWNLOAD_ORIGINAL_URL: Optional[
 CLASS2COLOR: Optional[Dict[str, List[str]]] = {"anthracnose": [255, 0, 0]}
 # If specific colors for classes are needed, fill this dict (e.g. {"class1": [255, 0, 0], "class2": [0, 255, 0]})
 
-PAPER: Optional[str] = None
+PAPER: Optional[str] = "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0258880"
 CITATION_URL: Optional[str] = None
-AUTHORS: Optional[List[str]] = ["chhan95"]
+AUTHORS: Optional[List[str]] = ["Chang Hee Han","Eal Kim","Tan Nhu Nhat Doan","Dongil Han","Seong Joon Yoo","Jin Tae Kwak"]
 
 ORGANIZATION_NAME: Optional[
     Union[str, List[str]]
