@@ -1,6 +1,6 @@
 Dataset **Disease Detection in Fruit Images** can be downloaded in [Supervisely format](https://developer.supervisely.com/api-references/supervisely-annotation-json-format):
 
- [Download](https://assets.supervisely.com/supervisely-supervisely-assets-public/teams_storage/8/J/3q/hYlLfxtsz13Ld81UrtaB2UIHR3Rufm3ynG3Um6PWtk6sAbSeXleLgmS717Y1jvj8XRWr311DrGafFu47IYu2xrCJEDqrams7r8f80UvZ1zfrMnkadmEvsxaQFAsZ.tar)
+ [Download](https://assets.supervisely.com/supervisely-supervisely-assets-public/teams_storage/3/v/qn/r5eyLYVUm5J2XStCNrXbPP87ySHRcr6BzaClkFh3qxYHrdxwYgh1R6PKtOcOfIkFJL89hEErG8eu2QiKHNJnJJZOzLprQvEs4IXj2vEYJ8gdXl4YAhLdBHhAxNbH.tar)
 
 As an alternative, it can be downloaded with *dataset-tools* package:
 ``` bash
