@@ -49,6 +49,7 @@ CLASS2COLOR: Optional[Dict[str, List[str]]] = {"anthracnose": [255, 0, 0]}
 PAPER: Optional[str] = "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0258880"
 CITATION_URL: Optional[str] = None
 AUTHORS: Optional[List[str]] = ["Chang Hee Han", "Eal Kim", "Tan Nhu Nhat Doan", "Dongil Han", "Seong Joon Yoo", "Jin Tae Kwak"]
+AUTHORS_CONTACTS: Optional[List[str]] = ["jkwak@korea.ac.kr"]
 
 ORGANIZATION_NAME: Optional[
     Union[str, List[str]]
@@ -98,6 +99,7 @@ def get_settings():
     settings["paper"] = PAPER
     settings["citation_url"] = CITATION_URL
     settings["authors"] = AUTHORS
+    settings["authors_contacts"] = AUTHORS_CONTACTS
     settings["organization_name"] = ORGANIZATION_NAME
     settings["organization_url"] = ORGANIZATION_URL
     settings["slytagsplit"] = SLYTAGSPLIT
